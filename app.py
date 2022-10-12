@@ -6,6 +6,9 @@ from pymongo import MongoClient
 import json
 from bson import json_util
 from bson.objectid import ObjectId
+# import pika 
+# from flask_rabbitmq import Queue
+# from flask_rabbitmq import RabbitMQ
 
 
 app = Flask(__name__)
@@ -15,6 +18,8 @@ client = MongoClient('localhost', 27017)
 pizza_house = client.pizza_house
 orders = pizza_house.orders
 
+# queue = Queue()
+
 
 @app.route('/welcome')
 def hello_world():
@@ -23,7 +28,7 @@ def hello_world():
     message = 'Welcome to Pizza House'
     
     return jsonify({
-        "status": success,
+        "status": status,
         "message": message
     })
 
